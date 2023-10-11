@@ -80,6 +80,10 @@ directories=(
     '/var/opt/tableau/tableau_server/data/tabsvc/logs/vizportal/'
     '/var/opt/tableau/tableau_server/data/tabsvc/logs/vizqlserver/'
     '/var/opt/tableau/tableau_server/data/tabsvc/logs/webhooks/'
+    
+#    Delete logs all in logs directory
+#    I don't recommend using this method, but this script can delete all logs for the month and year you specify. You don't need to specify the directory; it will search inside the "logs" directory at 
+#    '/var/opt/tableau/tableau_server/data/tabsvc/logs/'
 )
 
 # Check if there are no arguments
