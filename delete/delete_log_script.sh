@@ -57,7 +57,29 @@ validate_year() {
 
 # Define an array of directory names
 directories=(
-    '/target/repository/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/activationservice/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/analyticsextensions'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/apigateway'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/appzookeeper/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/backgrounder/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/clientfileservice/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/clustercontroller/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/collections/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/contentexploration/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/dataserver/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/filestore/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/flowminerva/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/flowprocessor/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/httpd/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/hyper/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/interactive/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/metrics/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/noninteractive/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/tabadminagent/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/tdsservice/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/vizportal/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/vizqlserver/'
+    '/var/opt/tableau/tableau_server/data/tabsvc/logs/webhooks/'
 )
 
 # Check if there are no arguments
