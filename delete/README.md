@@ -1,19 +1,3 @@
 # What is this script?
 
-So, i just tired to delete every log manual one by one.
-Then i create this script to automate it.
-This script will delete every log file in the specified directory.
-Just edit the directories (line 54).
-You just specify what directory, month, and year.
-
-For example, this script will delete every log file in /home/ubuntu/environment/dump/
-
-log-example.2023-10-11.log
-log-example.2023_10_11.log
-
-every file contains <year>-<month>- and <year>_<month>_
-
-month = 01 (01 for january, 02 for february and so on)
-year = 2023
-
-idk what i said and i don't know if you understand, but yeah, automation.
+So, what is this script. I was tired of manually deleting Tableau logs one by one, so I created this script to automate the process. With this script, all I have to do is run it and specify the directory, month, and year. What sets this script apart is its accidental log deletion protection. It won't delete logs from the current month and year. For instance, if I run this script in October 2023, it won't touch any logs created in October 2023. I can safely delete those logs in November 2023 or later.
