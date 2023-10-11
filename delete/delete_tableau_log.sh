@@ -17,6 +17,11 @@ display_usage() {
     exit 1
 }
 
+# Run the "du" command to list files before allowing directory selection
+echo "Current logs size: "
+du -hs /var/opt/tableau/tableau_server/data/tabsvc/logs/* | grep G
+du -hs /var/opt/tableau/tableau_server/data/tabsvc/logs/* | grep M
+
 # Display the directory options
 display_directory_options() {
     echo "Select a directory to delete files from:"
