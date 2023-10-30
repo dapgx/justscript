@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Display the usage information
+# Display usage information
 
 display_usage() {
     echo "Usage: $0 [options]"
@@ -17,11 +17,11 @@ display_usage() {
     exit 1
 }
 
-# Run the "du" command to list files before allowing directory selection
+# Run "du" command to list files before directory selection
 echo "Current logs size: "
 du -hs /var/opt/tableau/tableau_server/data/tabsvc/logs/* | grep G
 
-# Display the directory options
+# Display directory options
 display_directory_options() {
     echo "Select a directory to delete files from:"
     for i in "${!directories[@]}"; do
@@ -37,7 +37,7 @@ list_directories() {
     done
 }
 
-# Validate the month format
+# Validate month format
 validate_month() {
     local month="$1"
     # Remove any leading zeros
@@ -49,7 +49,7 @@ validate_month() {
     fi
 }
 
-# Validate the year format
+# Validate year format
 validate_year() {
     local year="$1"
     if [[ $year =~ ^[0-9]{4}$ && $year -ge 1900 && $year -le 2100 ]]; then
@@ -59,7 +59,7 @@ validate_year() {
     fi
 }
 
-# Define an array of directory names
+# A array contain directory names
 directories=(
     '/var/opt/tableau/tableau_server/data/tabsvc/logs/activationservice/'
     '/var/opt/tableau/tableau_server/data/tabsvc/logs/analyticsextensions'
@@ -85,10 +85,10 @@ directories=(
     '/var/opt/tableau/tableau_server/data/tabsvc/logs/vizqlserver/'
     '/var/opt/tableau/tableau_server/data/tabsvc/logs/webhooks/'
     
-#    Delete logs all in logs directory
-#    I don't recommend using this method, but this script can delete all logs for the month and year you specify.
-#    You don't need to specify the directory, it will search inside the "logs" directory
-#    '/var/opt/tableau/tableau_server/data/tabsvc/logs/'
+    # Delete logs all in logs directory
+    # I don't recommend using this method, but this script can delete all logs for the month and year you specify.
+    # You don't need to specify the directory, it will search inside the "logs" directory
+    # '/var/opt/tableau/tableau_server/data/tabsvc/logs/'
 )
 
 # Check if there are no arguments
@@ -97,7 +97,7 @@ if [ $# -eq 0 ]; then
     read -p "Enter the number of the directory: " dir_number
 fi
 
-# Get the current year and month
+# Get current year and month
 current_year=$(date +%Y)
 current_month=$(date +%m)
 
@@ -134,11 +134,9 @@ while getopts "hsd:m:y:" opt; do
     esac
 done
 
-# Ensure the chosen directory number is valid
 if [ -n "$dir_number" ] && ((dir_number >= 1 && dir_number <= ${#directories[@]})); then
     directory="${directories[dir_number-1]}"
 
-    # Ask the user for the month and year if not provided as options
     if [ -z "$month" ]; then
         read -p "Enter the month (e.g., 01 for January): " month
         if ! validate_month "$month"; then
@@ -154,18 +152,14 @@ if [ -n "$dir_number" ] && ((dir_number >= 1 && dir_number <= ${#directories[@]}
         fi
     fi
 
-    # Check if the specified directory exists
     if [ -d "$directory" ]; then
-        # Check if the selected year and month match the current year and month
         if [ "$year" -eq "$current_year" ] && [ "$month" -eq "$current_month" ]; then
             echo "Cannot delete files for the current year and month."
             exit 1
         fi
 
-        # Define the pattern based on the user's input
-        pattern="${year}-${month}-.*|${year}_${month}_.*"
+        pattern="*${year}-${month}-*|*${year}_${month}_.*"
 
-        # Delete files matching the pattern in a directory
         delete_files_with_pattern() {
             local directory="$1"
             local pattern="$2"
