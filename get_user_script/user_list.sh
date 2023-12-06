@@ -7,3 +7,4 @@ done < /etc/passwd > all_users_list.csv
 
 #TESTING
 #TESTING 2
+#FETCH TEST
